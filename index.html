@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Логотипы</title>
+    <link rel="stylesheet" href="fff.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            position: relative; /* Позволяет псевдоэлементу позиционироваться */
+            overflow: hidden; /* Скрывает выходящие за границы элементы */
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://kpi.ua/files/images-page/ukraine.jpg'); /* Ваше изображение */
+            background-size: cover; /* Покрывает весь экран */
+            background-position: center; /* Центрирует изображение */
+            transition: opacity 0.3s; /* Плавный переход для изменения прозрачности */
+            opacity: 1; /* Начальная непрозрачность */
+            z-index: -1; /* Помещает изображение под другими элементами */
+        }
+
+        .dark-mode::before {
+            opacity: 0.5; /* Уменьшает непрозрачность при темном режиме */
+        }
+
+        .dark-mode {
+            background-color: #333;
+            color: white;
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .adidas-logo, .dg-logo, .puma-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+        }
+
+        .stripe {
+            background-color: black;
+            height: 20px;
+            width: 100%;
+            border-radius: 5px;
+            margin: 2px 0;
+        }
+
+        .text {
+            font-family: 'Arial', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .dg-text, .puma-text {
+            font-family: 'Arial', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #ff6600;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #e65c00;
+        }
+
+        /* Адаптивные стили */
+        @media (max-width: 600px) {
+            .text, .dg-text, .puma-text {
+                font-size: 20px; /* Уменьшаем размер шрифта на мобильных */
+            }
+            button {
+                width: 100%; /* Кнопка на всю ширину */
+            }
+            .logo-container {
+                margin: 10px; /* Уменьшаем отступы */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Логотипы</h1>
+        <button id="toggle-theme">Темный режим</button>
+    </div>
+    
+    <div class="logo-container">
+        <div class="adidas-logo">
+            <div class="stripe"></div>
+            <div class="stripe"></div>
+            <div class="stripe"></div>
+            <div class="text">adidas</div>
+        </div>
+
+        <div class="dg-logo">
+            <div class="dg-text">Dolce & Gabbana</div>
+        </div>
+        
+        <div class="puma-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/en/5/56/Puma_logo.svg" alt="Puma Logo" style="width: 100px;">
+            <div class="puma-text">Puma</div>
+        </div>
+    </div>
+
+    <script>
+        const toggleButton = document.getElementById('toggle-theme');
+        let isDarkMode = false;
+
+        toggleButton.addEventListener('click', () => {
+            isDarkMode = !isDarkMode;
+            document.body.classList.toggle('dark-mode', isDarkMode);
+            toggleButton.textContent = isDarkMode ? 'Светлый режим' : 'Темный режим';
+        });
+    </script>
+</body>
+</html>

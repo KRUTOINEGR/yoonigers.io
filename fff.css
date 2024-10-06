@@ -1,0 +1,68 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #000000;
+    transition: background-color 0.3s, color 0.3s;
+    position: relative; /* Позволяет псевдоэлементу позиционироваться */
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('https://kpi.ua/files/images-page/ukraine.jpg'); /* Ваше изображение */
+    background-size: cover; /* Покрывает весь экран */
+    background-position: center; /* Центрирует изображение */
+    transition: opacity 0.3s; /* Плавный переход для изменения прозрачности */
+    opacity: 1; /* Начальная непрозрачность */
+    z-index: -1; /* Помещает изображение под другими элементами */
+}
+
+.dark-mode::before {
+    opacity: 0.5; /* Уменьшает непрозрачность при темном режиме */
+}
+
+header {
+    background-color: #ff6600;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+button {
+    background-color: white;
+    border: 1px solid #ff6600;
+    color: #ff6600;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover {
+    background-color: #ff6600;
+    color: white;
+}
+
+.dark-mode {
+    background-color: #333333;
+    color: white;
+}
+
+.dark-mode header {
+    background-color: #444444;
+}
+
+.dark-mode button {
+    background-color: #555555;
+    border: 1px solid #888888;
+    color: white;
+}
+
+.dark-mode button:hover {
+    background-color: #666666;
+}
